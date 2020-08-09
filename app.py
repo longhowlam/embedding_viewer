@@ -6,18 +6,13 @@ import numpy as np
 
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
-#@st.cache(allow_output_mutation=True)
-#def load_data():
-#    return pickle.load(_csv("test.csv")
-
-#input_data = load_data()
-
 uploaded_file = st.file_uploader("Choose a pickle file", type="pck")
 
 if uploaded_file is not None:
     input_data = pickle.load(uploaded_file)
-
-print( input_data.shape )   
+else:
+    input_data = pd.DataFrame()
+print(input_data.shape)   
 
 colnames = input_data.columns
 st.title("Embedding viewer")
@@ -36,7 +31,7 @@ inp_str = st.sidebar.text_input("look for string")
 hovername =  st.sidebar.selectbox("select hover", colnames)
 sizevar =  st.sidebar.selectbox("select size", colnames)
 
-mxsize = st.sidebar.slider("pointsiz", 1,15)
+mxsize = st.sidebar.slider("pointsize", 1,15)
 input_data[["labels"]] = input_data[[f"{labels}"]] 
 
 plot_data = (
