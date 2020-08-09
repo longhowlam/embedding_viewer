@@ -1,2 +1,2 @@
-# embedding_viewer
+# embedding viewer
 viewing embeddings in a streamlit app
