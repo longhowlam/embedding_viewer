@@ -10,6 +10,7 @@ uploaded_file = st.file_uploader("Choose a pickle file", type="pck")
 
 if uploaded_file is not None:
     input_data = pickle.load(uploaded_file)
+    input_data = input_data.fillna("geen")
 else:
     input_data = pd.DataFrame()
 print(input_data.shape)   
